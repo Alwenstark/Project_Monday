@@ -1,0 +1,82 @@
+/* Reset body styles */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Ensure it takes up the full height of the viewport */
+}
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    align-items: center; /* Vertically center */
+    justify-content: center; /* Horizontally center */
+    background-image: url('/bc.png'); /* Replace with your image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+form input {
+    width: 100%; /* Makes input fields span the full container width */
+    padding: 10px; /* Adds inner spacing for inputs */
+    box-sizing: border-box; /* Prevents inputs from overflowing the container */
+}
+
+/* Style the login container */
+.login-container {
+    width: 450px;
+    padding: 20px;
+    background: rgba(255, 255, 255, -0.4); /* Semi-transparent background */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8); /* Subtle shadow */
+    backdrop-filter: blur(10px); /* Optional: adds a blur effect */
+    text-align: center; /* Center the text inside */
+    color:white;
+}
+
+/* Style the heading */
+.login-container h2 {
+    margin-bottom: 20px;
+}
+
+/* Style the input fields */
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Style the login button */
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-container button:hover {
+    background-color: #0056b3;
+}
+.signup-button {
+    width: 100%; /* Full width of the container */
+    padding: 10px; /* Inner spacing for the button */
+    border: none;
+    border-radius: 4px;
+    background-color: #28a745; /* Green color for the Sign Up button */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px; /* Space above the Sign Up button */
+}
+
+.signup-button:hover {
+    background-color: #218838; /* Darker green color on hover */
+}

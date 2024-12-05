@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="login-container">
+    <h2>Sign Up</h2>
+    <form method="POST" action="/signup">
+    <input placeholder="Name" required type="text" name="name">
+        <input placeholder="Username" required type="text" name="username">
+        <input type="password" id="password" placeholder="Password" required name="password">
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+        <button type="submit">Sign Up</button>
+    </form>
+    <p id="passwordMessage" style="color: White; display: none;">Password must be at least 8 characters long, contain an
+        uppercase letter, a lowercase letter, and a number.</p>
+</div>
+<script src="/script.js"></script>
+</body>
+</html>
