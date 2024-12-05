@@ -15,33 +15,29 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GetMapping("/")
-    public String login()
-    {
+    public String login() {
         return "login";
     }
 
     @GetMapping("/signup")
-    public String signup()
-    {
+    public String signup() {
         return "signup";
     }
 
     @PostMapping("/home")
-    public String login(@RequestParam String username,@RequestParam String password){
-        if(customerService.checkCustomer(username,password)){
+    public String login(@RequestParam String username, @RequestParam String password) {
+        if (customerService.checkCustomer(username, password)) {
             return "home";
-        }
-        else {
+        } else {
             return "login";
         }
     }
 
     @PostMapping("/signup")
-    public String addCustomer(@RequestParam String name,@RequestParam String username,@RequestParam String password){
-        if(customerService.existingCustomer(username)) {
+    public String addCustomer(@RequestParam String name, @RequestParam String username, @RequestParam String password) {
+        if (customerService.existingCustomer(username)) {
             return "signup";
-        }
-        else {
+        } else {
             Customer customer = new Customer(name, username, password);
             customerService.addCustomer(customer);
             return "login";

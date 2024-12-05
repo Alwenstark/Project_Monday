@@ -11,16 +11,16 @@ public class CustomerService {
     @Autowired
     private CustomerRepo customerRepo;
 
-    public void addCustomer(Customer customer){
+    public void addCustomer(Customer customer) {
         customerRepo.save(customer);
     }
 
-    public boolean checkCustomer(String username,String password){
+    public boolean checkCustomer(String username, String password) {
         Customer customer = customerRepo.findByUsername(username);
-        return customer!=null && customer.getPassword().equals(password);
+        return customer != null && customer.getPassword().equals(password);
     }
 
-    public boolean existingCustomer(String username){
-        return customerRepo.findByUsername(username)!=null;
+    public boolean existingCustomer(String username) {
+        return customerRepo.findByUsername(username) != null;
     }
 }
