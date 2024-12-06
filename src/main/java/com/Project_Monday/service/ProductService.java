@@ -13,22 +13,26 @@ public class ProductService {
     @Autowired
     ProductRepo repo;
 
-    public String addProduct(Product product){
-        repo.save(product);
-        return "Sucess";
-    }
-
-    public String deleteProduct(Long prodId){
-        repo.deleteById(prodId);
-        return "success";
-    }
-
     public List<Product> getAllProducts(){
         return repo.findAll();
     }
 
     public Product getProductById(Long productId){
-        return repo.findById(productId).orElse(new Product());
+        return repo.findById(productId).orElse(null);
+    }
+
+    public String addProduct(Product product){
+        try {
+            repo.save(product);
+            return "Product added successfully!";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error occurred while adding the product.";
+        }
+    }
+
+    public void deleteProduct(Long productId){
+        repo.deleteById(productId);
     }
 
 }

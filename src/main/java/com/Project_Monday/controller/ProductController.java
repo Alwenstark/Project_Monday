@@ -18,24 +18,53 @@ public class ProductController {
     ProductService service;
 
     @GetMapping("products")
-    public String products(Model model) {
+    public String getProducts(Model model) {
         List<Product> productList = service.getAllProducts();
         model.addAttribute("products", productList);
-        return "products";
+        return "products"; //-------------------------------------->list of products page
+    }
+
+    @GetMapping("products/{id}")
+    public String getProduct(@PathVariable("id") Long productID, Model model) {
+        Product product = service.getProductById(productID);
+        if(product!=null) {
+            model.addAttribute("product", product);
+            return "product";   //---------------------------------->product page
+        } else
+            return "Bad Request"; //--------------------------------> bad request page
     }
 
     @PostMapping("addproduct")
-    public String addProduct(@RequestBody Product product){
-        return service.addProduct(product);
+    public String addProduct(@RequestParam String name,
+                             @RequestParam String size,
+                             @RequestParam double price,
+                             @RequestParam String category,
+                             @RequestParam String description,
+                             @RequestParam String color,
+                             @RequestParam String image_url,
+                             Model model ){
+        Product product = new Product();
+        product.setName(name);
+        product.setSize(size);
+        product.setPrice(price);
+        product.setCategory(category);
+        product.setDescription(description);
+        product.setColor(color);
+        product.setImage_url(image_url);
+
+        String response = service.addProduct(product);
+        model.addAttribute("message", response); //------->This give message in ui that is added successful or not
+        return "redirect:/products";
     }
 
     @DeleteMapping("deleteproduct/{id}")
     public String deleteProduct(@PathVariable("id") Long productId){
-        return service.deleteProduct(productId);
+        Product product = service.getProductById(productId);
+        if(product!=null) {
+            service.deleteProduct(productId);
+            return "redirect:/products";
+        } else
+            return "Bad Request";
     }
 
-    @GetMapping("products/{productId}")
-    public Product getProductById(@PathVariable Long productId){
-        return service.getProductById(productId);
-    }
 }

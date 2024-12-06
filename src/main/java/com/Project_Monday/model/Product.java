@@ -22,12 +22,12 @@ public class Product {
     private String category;
     private String description;
     private String color;
-    private String image;
+    private String image_url;
 
     public Product() {
     }
 
-    public Product(Long productId, String name, String size, double price, String category, String description, String color, String image) {
+    public Product(Long productId, String name, String size, double price, String category, String description, String color, String image_url) {
         this.productId = productId;
         this.name = name;
         this.size = size;
@@ -35,6 +35,6 @@ public class Product {
         this.category = category;
         this.description = description;
         this.color = color;
-        this.image = image;
+        this.image_url = image_url;
     }
 }
