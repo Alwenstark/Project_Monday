@@ -13,19 +13,21 @@ public class ProductService {
     @Autowired
     ProductRepo repo;
 
-    public void addProduct(Product product){
+    public String addProduct(Product product){
         repo.save(product);
+        return "Sucess";
     }
 
-    public void deleteProduct(int prodId){
+    public String deleteProduct(Long prodId){
         repo.deleteById(prodId);
+        return "success";
     }
 
     public List<Product> getAllProducts(){
         return repo.findAll();
     }
 
-    public Product getProductById(int productId){
+    public Product getProductById(Long productId){
         return repo.findById(productId).orElse(new Product());
     }
 
