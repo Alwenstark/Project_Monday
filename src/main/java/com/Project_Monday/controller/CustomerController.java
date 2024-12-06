@@ -2,6 +2,7 @@
 package com.Project_Monday.controller;
 
 import com.Project_Monday.model.Customer;
+import com.Project_Monday.model.CustomerType;
 import com.Project_Monday.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,22 +27,33 @@ public class CustomerController {
     }
 
     @PostMapping("/home")
-    public String login(@RequestParam String username, @RequestParam String password) {
+    public String login(@RequestParam String username,
+                        @RequestParam String password) {
         if (customerService.checkCustomer(username, password)) {
-            return "home";
+            if (customerService.checkDomain(username)){
+                return "seller";
+            }
+            else {
+                return "buyer";
+            }
         } else {
             return "login";
         }
     }
 
     @PostMapping("/signup")
-    public String addCustomer(@RequestParam String name, @RequestParam String username, @RequestParam String password) {
+    public String addCustomer(@RequestParam String name,
+                              @RequestParam String username,
+                              @RequestParam String password,
+                              @RequestParam String role) {
         if (customerService.existingCustomer(username)) {
             return "signup";
         } else {
-            Customer customer = new Customer(name, username, password);
+            CustomerType customerType = CustomerType.valueOf(role);
+            Customer customer = new Customer(name, username, password,customerType);
             customerService.addCustomer(customer);
             return "login";
         }
     }
-}*/
+}
+*/

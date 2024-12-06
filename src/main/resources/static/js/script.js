@@ -21,3 +21,15 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
         window.location.href = 'login.html'; // Redirect to login page (change URL if needed)
     }
 });
+document.querySelectorAll('.role-button').forEach(button => {
+    button.addEventListener('click', () => {
+        // Remove 'selected' class from all buttons
+        document.querySelectorAll('.role-button').forEach(btn => btn.classList.remove('selected'));
+
+        // Add 'selected' class to the clicked button
+        button.classList.add('selected');
+
+        // Set the role value for form submission
+        document.getElementById('role').value = button.value;
+    });
+});

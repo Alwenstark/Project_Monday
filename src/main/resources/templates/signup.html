@@ -3,21 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <div class="login-container">
-    <h2>Sign Up</h2>
+    <h1>SIGN UP</h1>
     <form method="POST" action="/signup">
-    <input placeholder="Name" required type="text" name="name">
+        <input placeholder="Name" required type="text" name="name">
         <input placeholder="Username" required type="text" name="username">
         <input type="password" id="password" placeholder="Password" required name="password">
         <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+        <div class="role-selection">
+            <label class="switch">
+                <input type="radio" id="admin" name="role" value="SELLER" required>
+                <span class="slider"></span>
+            </label>
+            <h2>Seller</h2>
+            <label class="switch">
+                <input type="radio" id="customer" name="role" value="BUYER" required>
+                <span class="slider"></span>
+            </label>
+            <h2>Buyer</h2>
+        </div>
         <button type="submit">Sign Up</button>
     </form>
     <p id="passwordMessage" style="color: White; display: none;">Password must be at least 8 characters long, contain an
         uppercase letter, a lowercase letter, and a number.</p>
 </div>
-<script src="/script.js"></script>
+
+<script src="/js/script.js"></script>
 </body>
 </html>
