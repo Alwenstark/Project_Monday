@@ -4,33 +4,38 @@ package com.Project_Monday.controller;
 import com.Project_Monday.model.Product;
 import com.Project_Monday.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/")
 public class ProductController {
 
     @Autowired
     ProductService service;
 
-    @GetMapping("/")
-    public String login()
-    {
-        return "Welcome";
+    @GetMapping("products")
+    public String products(Model model) {
+        List<Product> productList = service.getAllProducts();
+        model.addAttribute("products", productList);
+        return "products";
     }
 
-    @GetMapping("products")
-    public List<Product> getAllProducts(){
-        return service.getAllProducts();
+    @PostMapping("addproduct")
+    public String addProduct(@RequestBody Product product){
+        return service.addProduct(product);
+    }
+
+    @DeleteMapping("deleteproduct/{id}")
+    public String deleteProduct(@PathVariable("id") Long productId){
+        return service.deleteProduct(productId);
     }
 
     @GetMapping("products/{productId}")
-    public Product getProductById(@PathVariable int productId){
+    public Product getProductById(@PathVariable Long productId){
         return service.getProductById(productId);
     }
 }
