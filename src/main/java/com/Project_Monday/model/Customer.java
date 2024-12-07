@@ -14,6 +14,8 @@ public class Customer {
     private String name;
     private String password;
     private String username;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Kart kart;
 
     @Enumerated(EnumType.STRING) 
     private CustomerType customerType;
@@ -23,5 +25,6 @@ public class Customer {
         this.username=username;
         this.password=password;
         this.customerType=customerType;
+        this.kart=new Kart();
     }
 }
