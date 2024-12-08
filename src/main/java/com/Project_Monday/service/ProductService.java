@@ -35,4 +35,11 @@ public class ProductService {
         repo.deleteById(productId);
     }
 
+    public void updateProduct(Long productId, String newName, double newPrice) {
+        Product product = repo.findById(productId).get();
+        product.setName(newName);
+        product.setPrice(newPrice);
+        repo.save(product);
+    }
+
 }
