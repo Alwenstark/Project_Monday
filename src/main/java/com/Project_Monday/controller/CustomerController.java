@@ -1,4 +1,3 @@
-/*
 package com.Project_Monday.controller;
 
 import com.Project_Monday.model.Customer;
@@ -56,4 +55,3 @@ public class CustomerController {
         }
     }
 }
-*/
