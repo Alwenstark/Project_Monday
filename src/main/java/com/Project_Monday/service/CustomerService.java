@@ -1,5 +1,6 @@
 package com.Project_Monday.service;
 
+import com.Project_Monday.model.Cart;
 import com.Project_Monday.model.Customer;
 import com.Project_Monday.model.CustomerType;
 import com.Project_Monday.repository.CustomerRepo;
@@ -12,7 +13,16 @@ public class CustomerService {
     @Autowired
     private CustomerRepo customerRepo;
 
-    public void addCustomer(Customer customer) {
+    public void addCustomer(String name,
+                            String username,
+                            String password,
+                            String role)
+    {
+        CustomerType customerType = CustomerType.valueOf(role);
+        Customer customer = new Customer(name, username, password,customerType);
+        Cart cart = new Cart();
+        customer.setCart(cart);
+        cart.setCustomer(customer);
         customerRepo.save(customer);
     }
 

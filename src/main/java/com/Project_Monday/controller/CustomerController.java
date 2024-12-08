@@ -1,8 +1,5 @@
-/*
 package com.Project_Monday.controller;
 
-import com.Project_Monday.model.Customer;
-import com.Project_Monday.model.CustomerType;
 import com.Project_Monday.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,11 +46,8 @@ public class CustomerController {
         if (customerService.existingCustomer(username)) {
             return "signup";
         } else {
-            CustomerType customerType = CustomerType.valueOf(role);
-            Customer customer = new Customer(name, username, password,customerType);
-            customerService.addCustomer(customer);
+            customerService.addCustomer(name, username, password, role);
             return "login";
         }
     }
 }
-*/
