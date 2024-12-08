@@ -18,7 +18,10 @@
               <p id="product-name" th:text="${product.getName()}"></p>
               <p id="product-price" th:text="${product.getPrice()}"></p>
               <p id="product-size" th:text="'Size: ' + ${product.size}"></p>
-              <button th:onclick="'/cart/add/' + ${product.getProductId()}">Add to Cart</button>
+              <form th:action="@{/addkart}" method="post">
+                  <input type="hidden" name="productId" th:value="${product.getProductId()}">
+                  <button type="submit">Add to Cart</button>
+              </form>
           </li>
       </ul>
   </main>
