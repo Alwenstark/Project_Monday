@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product List</title>
+    <link rel="stylesheet" th:href="@{/css/products.css}">
+
+</head>
+<body>
+  <header>
+    <h1>Product List</h1>
+    <p th:if="${message}" th:text="${message}"></p>
+  </header>
+  <main>
+      <ul id="product-container">
+          <li th:each="product : ${products}">
+              <a th:href="@{'/products/'+${product.getProductId()}}">
+                  <div>
+                      <img id="product-image" src="/images/img.jpg" alt="Dress Image">
+                      <p id="product-name" th:text="${product.getName()}"></p>
+                      <p id="product-price" th:text="${product.getPrice()}"></p>
+                      <!--              <p id="product-size" th:text="'Size: ' + ${product.size}"></p>-->
+                      <button th:onclick="'/cart/add/' + ${product.getProductId()}">Add to Cart</button>
+                  </div>
+              </a>
+              <a th:href="@{'/products/delete/'+${product.getProductId()}}">Delete</a>
+              <a th:href="@{/products/updateproduct(id=${product.getProductId()})}">Edit</a>
+          </li>
+      </ul>
+  </main>
+<footer>
+    <a th:href="@{/products/addproduct}">Add Product</a>
+</footer>
+</body>
+</html>
