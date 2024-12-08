@@ -1,13 +1,14 @@
 package com.Project_Monday.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 @Entity
@@ -23,6 +24,10 @@ public class Product {
     private String description;
     private String color;
     private String image_url;
+
+    @ManyToMany(mappedBy = "products")
+    @JsonIgnore
+    private List<Cart> cart;
 
     public Product() {
     }
